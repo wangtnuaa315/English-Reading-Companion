@@ -1,0 +1,86 @@
+<!--pages/result/result.wxml-->
+<view class="result-container">
+  <!-- 图片预览区 -->
+  <view class="image-section">
+    <image class="preview-image" src="{{imagePath}}" mode="aspectFill" bindtap="previewImage"/>
+    <!-- 识别区域高亮（装饰用） -->
+    <view class="image-overlay">
+      <view class="highlight-box highlight-1" wx:if="{{wordList.length > 0}}"></view>
+      <view class="highlight-box highlight-2" wx:if="{{wordList.length > 1}}"></view>
+    </view>
+    <!-- 放大按钮 -->
+    <view class="zoom-btn" bindtap="previewImage">
+      <text class="zoom-icon">🔍</text>
+    </view>
+  </view>
+
+  <!-- 结果卡片区域 -->
+  <view class="result-panel">
+    <!-- 拖拽指示条 -->
+    <view class="drag-indicator">
+      <view class="drag-bar"></view>
+    </view>
+
+    <!-- 标题区域 -->
+    <view class="panel-header">
+      <view class="panel-header-left">
+        <text class="panel-title">识别文本</text>
+        <text class="panel-subtitle">英译中 • {{wordList.length}} 项</text>
+      </view>
+      <view class="panel-header-right">
+        <view class="play-all-btn" bindtap="playAll">
+          <text class="play-all-icon">🔊</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 单词列表 -->
+    <scroll-view class="word-list" scroll-y="true">
+      <!-- 加载中 -->
+      <view class="loading-state" wx:if="{{isLoading}}">
+        <view class="loading-spinner"></view>
+        <text class="loading-text">正在识别翻译中...</text>
+      </view>
+
+      <!-- 单词卡片 -->
+      <view class="word-card {{playingIndex === index ? 'word-card-active' : ''}}" 
+            wx:for="{{wordList}}" wx:key="index">
+        <view class="word-content">
+          <!-- 组合音标序列与单词本体 -->
+          <view class="sentence-container">
+            <view class="word-block" wx:for="{{item.wordTokens}}" wx:for-item="token" wx:key="index">
+              <text class="word-phonetic">{{token.phonetic || ' '}}</text>
+              <text class="word-text">{{token.text}}</text>
+            </view>
+          </view>
+          <!-- 中文翻译 -->
+          <text class="word-chinese">{{item.translation}}</text>
+        </view>
+        <!-- 朗读按钮 -->
+        <view class="speak-btn {{playingIndex === index ? 'speak-btn-active' : ''}}" 
+              bindtap="playWord" data-index="{{index}}" data-word="{{item.word}}">
+          <text class="speak-icon">🔊</text>
+        </view>
+      </view>
+
+      <!-- 底部占位 -->
+      <view style="height: 280rpx;"></view>
+    </scroll-view>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-actions">
+    <button class="action-btn action-btn-primary" bindtap="translateAll">
+      <text class="action-icon">🔤</text>
+      <text class="action-text">全部翻译</text>
+    </button>
+    <button class="action-btn action-btn-outline" bindtap="copyContent">
+      <text class="action-icon">📋</text>
+      <text class="action-text">复制内容</text>
+    </button>
+    <button class="action-btn action-btn-outline" bindtap="saveWordList">
+      <text class="action-icon">🔖</text>
+      <text class="action-text">保存生词</text>
+    </button>
+  </view>
+</view>

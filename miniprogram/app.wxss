@@ -1,0 +1,111 @@
+/* app.wxss - 全局样式 */
+
+/* CSS 变量 */
+page {
+  --primary: #2b7cee;
+  --primary-light: rgba(43, 124, 238, 0.1);
+  --primary-shadow: rgba(43, 124, 238, 0.3);
+  --bg-light: #f6f7f8;
+  --bg-dark: #101822;
+  --surface: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #64748b;
+  --text-tertiary: #94a3b8;
+  --border: #e2e8f0;
+  --border-light: #f1f5f9;
+
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--text-primary);
+  font-size: 28rpx;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 全局盒模型重置 */
+view, scroll-view, text, image, button, input, textarea {
+  box-sizing: border-box;
+}
+
+/* 通用容器 */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-light);
+}
+
+/* 通用按钮样式 */
+.btn-primary {
+  background-color: var(--primary);
+  color: #ffffff;
+  border: none;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  box-shadow: 0 8rpx 24rpx var(--primary-shadow);
+  transition: all 0.2s ease;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+.btn-primary:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+.btn-outline {
+  background-color: var(--surface);
+  color: var(--text-primary);
+  border: 2rpx solid var(--border);
+  border-radius: 24rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  transition: all 0.2s ease;
+}
+
+.btn-outline::after {
+  border: none;
+}
+
+.btn-outline:active {
+  background-color: var(--border-light);
+  transform: scale(0.98);
+}
+
+/* 通用卡片 */
+.card {
+  background-color: var(--surface);
+  border-radius: 24rpx;
+  border: 2rpx solid var(--border-light);
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+/* 图标基础 */
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 文字截断 */
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 安全区域 */
+.safe-bottom {
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20rpx);
+}

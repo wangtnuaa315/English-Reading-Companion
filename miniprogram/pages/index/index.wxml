@@ -1,0 +1,85 @@
+<!--pages/index/index.wxml-->
+<view class="container">
+  <!-- 顶部标题栏 -->
+  <view class="header" style="padding-top: {{statusBarHeight}}px;">
+    <view class="header-content">
+      <view class="header-icon-wrap">
+        <text style="font-size: 36rpx;">📖</text>
+      </view>
+      <text class="header-title">AI 英语翻译助手</text>
+      <view class="header-action" bindtap="onSettings">
+        <text class="icon-text">⚙</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <scroll-view class="content" scroll-y="true">
+    <!-- 中部扫描图标 -->
+    <view class="hero-section">
+      <view class="hero-circle">
+        <view class="hero-circle-pulse"></view>
+        <view class="hero-icon-wrap">
+          <text class="hero-icon">📄</text>
+        </view>
+        <view class="hero-dot-1"></view>
+        <view class="hero-dot-2"></view>
+      </view>
+    </view>
+
+    <!-- 标题文案 -->
+    <view class="hero-text">
+      <text class="hero-title">拍照扫描翻译</text>
+      <text class="hero-subtitle">高精度AI智能识别，即刻翻译图片文字。</text>
+    </view>
+
+    <!-- 操作按钮区域 -->
+    <view class="action-section">
+      <view class="btn-row">
+        <view class="btn-primary" bindtap="takePhoto">
+          <text class="btn-primary-icon">📷</text>
+          <text class="btn-primary-text">拍摄照片</text>
+        </view>
+        <view class="btn-primary" bindtap="chooseFromAlbum">
+          <text class="btn-primary-icon">🖼</text>
+          <text class="btn-primary-text">从相册选择</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 历史记录 -->
+    <view class="history-section">
+      <view class="history-header">
+        <text class="history-title">历史记录</text>
+        <text class="history-link" bindtap="viewAllHistory">查看全部</text>
+      </view>
+
+      <view class="history-list" wx:if="{{historyList.length > 0}}">
+        <view class="history-item" wx:for="{{historyList}}" wx:key="id" bindtap="goToResult" data-id="{{item.id}}">
+          <view class="history-thumb" wx:if="{{item.imagePath}}">
+            <image src="{{item.imagePath}}" mode="aspectFill" class="history-thumb-img"/>
+          </view>
+          <view class="history-thumb history-thumb-default" wx:else>
+            <text class="history-thumb-icon">📝</text>
+          </view>
+          <view class="history-info">
+            <text class="history-name">{{item.title}}</text>
+            <text class="history-meta">翻译为中文 • {{item.timeDisplay}}</text>
+          </view>
+          <view class="history-arrow">
+            <text class="arrow-icon">›</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{historyList.length === 0}}">
+        <text class="empty-icon">📋</text>
+        <text class="empty-text">暂无记录，拍照或上传图片开始翻译吧</text>
+      </view>
+    </view>
+
+    <!-- 底部占位 -->
+    <view style="height: 120rpx;"></view>
+  </scroll-view>
+</view>

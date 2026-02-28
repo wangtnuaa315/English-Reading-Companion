@@ -1,0 +1,333 @@
+/* pages/result/result.wxss */
+
+.result-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #f6f7f8;
+  position: relative;
+}
+
+/* 图片预览区 */
+.image-section {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 75%; /* 4:3 比例 */
+  background: #e2e8f0;
+  overflow: hidden;
+}
+
+.preview-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0.9;
+}
+
+.image-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.highlight-box {
+  position: absolute;
+  border: 4rpx solid #2b7cee;
+  background: rgba(43, 124, 238, 0.15);
+  border-radius: 8rpx;
+}
+
+.highlight-1 {
+  top: 30%;
+  left: 15%;
+  width: 30%;
+  height: 8%;
+}
+
+.highlight-2 {
+  top: 42%;
+  left: 15%;
+  width: 45%;
+  height: 8%;
+}
+
+.zoom-btn {
+  position: absolute;
+  bottom: 24rpx;
+  right: 24rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.15);
+}
+
+.zoom-icon {
+  font-size: 36rpx;
+}
+
+/* 结果卡片面板 */
+.result-panel {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 32rpx 32rpx 0 0;
+  margin-top: -32rpx;
+  box-shadow: 0 -8rpx 32rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 10;
+}
+
+/* 拖拽指示条 */
+.drag-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 0 8rpx;
+}
+
+.drag-bar {
+  width: 80rpx;
+  height: 8rpx;
+  background: #e2e8f0;
+  border-radius: 8rpx;
+}
+
+/* 面板标题 */
+.panel-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 36rpx 24rpx;
+  border-bottom: 2rpx solid #f1f5f9;
+}
+
+.panel-header-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel-title {
+  font-size: 36rpx;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.panel-subtitle {
+  font-size: 24rpx;
+  color: #94a3b8;
+  margin-top: 4rpx;
+}
+
+.play-all-btn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.play-all-btn:active {
+  background: rgba(43, 124, 238, 0.1);
+}
+
+.play-all-icon {
+  font-size: 36rpx;
+  color: #2b7cee;
+}
+
+/* 单词列表 */
+.word-list {
+  flex: 1;
+  padding: 16rpx 24rpx;
+}
+
+/* 单词卡片 */
+.word-card {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+  padding: 28rpx;
+  border-radius: 24rpx;
+  background: #f8fafc;
+  margin-bottom: 20rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.word-card:active,
+.word-card-active {
+  background: #f1f5f9;
+  border-color: #e2e8f0;
+}
+
+.word-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+/* 句子逐词排列组合 */
+.sentence-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  column-gap: 10rpx;
+  row-gap: 14rpx;
+  margin-bottom: 8rpx;
+}
+
+/* 单个词汇块（含上方音标占位） */
+.word-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+/* 单词正上方的微型音标 */
+.word-phonetic {
+  font-size: 20rpx;
+  font-family: 'Courier New', monospace;
+  color: #2b7cee;
+  font-weight: 500;
+  height: 24rpx;
+  line-height: 24rpx;
+  margin-bottom: 2rpx;
+  white-space: pre; /* 保留空格以充当没有音标时的隐藏占位 */
+}
+
+/* 片段本体文字 */
+.word-text {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.2;
+}
+
+/* 中文翻译 */
+.word-chinese {
+  font-size: 28rpx;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* 朗读按钮 */
+.speak-btn {
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: transparent;
+  transition: all 0.2s ease;
+}
+
+.speak-btn:active,
+.speak-btn-active {
+  background: rgba(43, 124, 238, 0.1);
+}
+
+.speak-icon {
+  font-size: 36rpx;
+  color: #94a3b8;
+}
+
+.speak-btn-active .speak-icon {
+  color: #2b7cee;
+}
+
+/* 加载状态 */
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 80rpx 0;
+}
+
+.loading-spinner {
+  width: 60rpx;
+  height: 60rpx;
+  border: 6rpx solid #e2e8f0;
+  border-top-color: #2b7cee;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 24rpx;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  font-size: 26rpx;
+  color: #94a3b8;
+}
+
+/* 底部操作栏 */
+.bottom-actions {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 16rpx;
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(env(safe-area-inset-bottom) + 20rpx);
+  background: #ffffff;
+  border-top: 2rpx solid #f1f5f9;
+  z-index: 20;
+}
+
+.action-btn {
+  flex: 1;
+  height: 84rpx;
+  border-radius: 24rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8rpx;
+  font-size: 26rpx;
+  font-weight: 600;
+  padding: 0;
+  margin: 0;
+  line-height: 84rpx;
+  border: none;
+}
+
+.action-btn::after {
+  border: none;
+}
+
+.action-btn:active {
+  transform: scale(0.95);
+}
+
+.action-btn-primary {
+  background: #2b7cee;
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(43, 124, 238, 0.3);
+}
+
+.action-btn-outline {
+  background: #ffffff;
+  color: #334155;
+  border: 2rpx solid #e2e8f0 !important;
+}
+
+.action-icon {
+  font-size: 28rpx;
+}
+
+.action-text {
+  font-size: 24rpx;
+}

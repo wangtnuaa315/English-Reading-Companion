@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>翻译与音标结果详情页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b7cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2430",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-surface-light/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-3 flex items-center justify-between">
+<button class="p-2 -ml-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-2xl">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold text-slate-900 dark:text-white">翻译与音标结果</h1>
+<button class="p-2 -mr-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+<span class="material-symbols-outlined text-2xl">more_vert</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col relative pb-32">
+<div class="relative w-full aspect-[4/3] bg-slate-200 dark:bg-slate-800 overflow-hidden group shrink-0">
+<img alt="Book page with English text" class="w-full h-full object-cover opacity-90 transition-transform duration-700 group-hover:scale-105" data-alt="Open book page with clear English text" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCx5ihH74adRDwQmyluvkk7gaSbCtct2vqBl_MldShaGiylP01ovPEjcymMikedd_qIiMBu8-ibNrhUe6_e6RZqDTTBc4XQa1mTJrVCLLWBjbk9e_z12c3Ote_OAMW0X7wL0-Dv1N_tRwcYNdQQd0M1OVb5Z8_9hKdNgUYU_vHzwBOdwuYsNivKiE5mliqFOLFy0h1UR0xgF1bm6Yqo2Q7KGuC-bR_W5s6u_PHJRa4Ff8QsUeqqgTg_MvcL69xxLvhJjZi1bkKZdC4"/>
+<div class="absolute inset-0 bg-black/10">
+<div class="absolute top-[30%] left-[15%] w-[30%] h-[8%] border-2 border-primary bg-primary/20 rounded"></div>
+<div class="absolute top-[42%] left-[15%] w-[45%] h-[8%] border-2 border-primary bg-primary/20 rounded"></div>
+</div>
+<button class="absolute bottom-4 right-4 bg-surface-light dark:bg-surface-dark text-slate-900 dark:text-white p-3 rounded-full shadow-lg flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">crop_free</span>
+</button>
+</div>
+<div class="flex-1 bg-surface-light dark:bg-surface-dark rounded-t-2xl -mt-4 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] flex flex-col z-10 relative">
+<div class="w-full flex justify-center pt-3 pb-1">
+<div class="w-12 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full"></div>
+</div>
+<div class="px-5 py-4 flex items-center justify-between border-b border-slate-100 dark:border-slate-800">
+<div>
+<h2 class="text-xl font-bold text-slate-900 dark:text-white">识别文本</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400">英译中 • 4 项</p>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded-full bg-slate-50 dark:bg-slate-800 text-primary hover:bg-primary/10 transition-colors" title="播放全部">
+<span class="material-symbols-outlined">volume_up</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-y-auto p-4 space-y-4">
+<div class="flex gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 group">
+<div class="flex-1 space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-mono text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">/həˈloʊ/</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Hello</h3>
+<p class="text-slate-600 dark:text-slate-300 text-base">你好 (Nǐ hǎo)</p>
+</div>
+<button class="self-center p-2 rounded-full text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all opacity-100" title="朗读">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+</button>
+</div>
+<div class="flex gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 group">
+<div class="flex-1 space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-mono text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">/wɜːrld/</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">World</h3>
+<p class="text-slate-600 dark:text-slate-300 text-base">世界 (Shìjiè)</p>
+</div>
+<button class="self-center p-2 rounded-full text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all opacity-100" title="朗读">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+</button>
+</div>
+<div class="flex gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 group">
+<div class="flex-1 space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-mono text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">/fəˈnɛtɪks/</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Phonetics</h3>
+<p class="text-slate-600 dark:text-slate-300 text-base">语音学 (Yǔyīn xué)</p>
+</div>
+<button class="self-center p-2 rounded-full text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all opacity-100" title="朗读">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+</button>
+</div>
+<div class="flex gap-4 p-4 rounded-xl bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors border border-transparent hover:border-slate-200 dark:hover:border-slate-700 group">
+<div class="flex-1 space-y-1">
+<div class="flex items-baseline gap-2">
+<span class="text-xs font-mono text-primary font-medium bg-primary/10 px-1.5 py-0.5 rounded">/trænzˈleɪʃən/</span>
+</div>
+<h3 class="text-lg font-bold text-slate-900 dark:text-white leading-tight">Translation</h3>
+<p class="text-slate-600 dark:text-slate-300 text-base">翻译 (Fānyì)</p>
+</div>
+<button class="self-center p-2 rounded-full text-slate-400 hover:text-primary hover:bg-white dark:hover:bg-slate-700 shadow-sm transition-all opacity-100" title="朗读">
+<span class="material-symbols-outlined text-[24px]">volume_up</span>
+</button>
+</div>
+</div>
+</div>
+<div class="fixed bottom-24 left-0 right-0 px-4 z-20 pointer-events-none flex gap-3 justify-center">
+<button class="flex-1 pointer-events-auto bg-primary hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl shadow-lg shadow-primary/30 flex items-center justify-center gap-2 transition-all active:scale-95 text-sm">
+<span class="material-symbols-outlined text-[20px]">translate</span>
+<span>全部翻译</span>
+</button>
+<button class="pointer-events-auto bg-surface-light dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold py-3 px-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95 border border-slate-200 dark:border-slate-700 text-sm">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+<span>复制内容</span>
+</button>
+<button class="pointer-events-auto bg-surface-light dark:bg-surface-dark hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold py-3 px-4 rounded-xl shadow-lg flex items-center justify-center gap-2 transition-all active:scale-95 border border-slate-200 dark:border-slate-700 text-sm">
+<span class="material-symbols-outlined text-[20px]">bookmark</span>
+<span>保存生词</span>
+</button>
+</div>
+</main>
+<nav class="bg-surface-light dark:bg-surface-dark border-t border-slate-200 dark:border-slate-800 px-6 pb-6 pt-3 flex justify-between items-center z-50 fixed bottom-0 w-full">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined filled text-[24px]">home</span>
+<span class="text-xs font-medium">首页</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">history</span>
+<span class="text-xs font-medium">历史</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<span class="text-xs font-medium">我的</span>
+</a>
+</nav>
+
+</body></html>

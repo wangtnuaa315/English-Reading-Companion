@@ -1,0 +1,43 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/result/result",
+    "pages/history/history",
+    "pages/profile/profile"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "AI 英语翻译助手",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f6f7f8",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#94a3b8",
+    "selectedColor": "#2b7cee",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/tab-home.png",
+        "selectedIconPath": "images/tab-home-active.png"
+      },
+      {
+        "pagePath": "pages/history/history",
+        "text": "历史",
+        "iconPath": "images/tab-history.png",
+        "selectedIconPath": "images/tab-history-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab-profile.png",
+        "selectedIconPath": "images/tab-profile-active.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2"
+}

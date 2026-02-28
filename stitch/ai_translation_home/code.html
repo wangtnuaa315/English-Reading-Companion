@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI 英语翻译助手首页</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2b7cee",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101822",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>.scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display antialiased">
+<div class="relative flex h-full min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden max-w-md mx-auto shadow-2xl">
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center">
+<div class="size-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">translate</span>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">AI 英语翻译助手</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 bg-transparent text-slate-900 dark:text-slate-100 gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</div>
+<div class="flex-1 flex flex-col items-center px-6 pt-6 pb-24 overflow-y-auto scrollbar-hide">
+<div class="w-full flex justify-center py-8">
+<div class="relative w-48 h-48 rounded-full bg-gradient-to-b from-primary/5 to-primary/20 flex items-center justify-center shadow-inner">
+<div class="absolute inset-0 rounded-full border border-primary/10 animate-pulse"></div>
+<div class="size-24 text-primary">
+<span class="material-symbols-outlined text-[96px]" style="font-size: 96px;">document_scanner</span>
+</div>
+<div class="absolute top-8 right-8 size-3 bg-blue-400 rounded-full opacity-60"></div>
+<div class="absolute bottom-10 left-10 size-2 bg-indigo-400 rounded-full opacity-40"></div>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 tracking-tight text-[28px] font-bold leading-tight text-center pb-2">拍照扫描翻译</h2>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal text-center max-w-[280px] mb-8">
+                高精度AI智能识别，即刻翻译图片文字。
+            </p>
+<div class="w-full flex flex-col gap-4 mb-10">
+<button class="w-full h-16 bg-primary hover:bg-blue-600 active:scale-[0.98] transition-all rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-primary/30 group">
+<span class="material-symbols-outlined text-white group-hover:animate-bounce">upload_file</span>
+<span class="text-white text-lg font-semibold">上传图片</span>
+</button>
+<div class="grid grid-cols-2 gap-4">
+<button class="h-14 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-primary">photo_camera</span>
+<span class="text-slate-700 dark:text-slate-200 font-medium">拍摄照片</span>
+</button>
+<button class="h-14 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl flex items-center justify-center gap-2 hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-primary">image</span>
+<span class="text-slate-700 dark:text-slate-200 font-medium">从相册选择</span>
+</button>
+</div>
+</div>
+<div class="w-full flex flex-col gap-4">
+<div class="flex items-center justify-between px-1">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">历史记录</h3>
+<a class="text-primary text-sm font-medium hover:underline" href="#">查看全部</a>
+</div>
+<div class="flex flex-col gap-3">
+<div class="flex items-center p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 bg-cover bg-center shrink-0 overflow-hidden relative" data-alt="Menu card text close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuD-i8tC4iov-VMJUnS6chS9mYPHrr8h3Fa7_P6OyDLSmwOA0m7b9xINDu7q_RFiZAVEZKcs_6zTpmLR-8-ZbQYPfTWszPAtbaWpSi2DCxmUDmn9v9LsP-45ZHNa6-7Xr5KGyxuuyugjUzgwl8_1vUMvlIgfF5qpSRGgpyZURlMkOjeblJQZiQWkoDEbDFxzSC5HksjKSsAdGet9ED6sQ4d80Wx5qMWj3qnPZXALjCBjeljhzgR7EEswZ6KwJwxVMNlCG1XQJxG35Fg");'>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="flex-1 ml-3 overflow-hidden">
+<p class="text-slate-900 dark:text-slate-100 font-medium truncate">餐厅英文菜单翻译</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs truncate">翻译为中文 • 刚刚</p>
+</div>
+<button class="size-8 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-700 bg-cover bg-center shrink-0 overflow-hidden relative" data-alt="Street sign text close up" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwAv4cN91PQRQvzJtXAf4G06AiPKo8y7ft_2G9CvQru0vQ5tyYcc1CC1rs2LJv-nwFE9_lW2JZbnk9O9CLk_y0xR6-YS8RjVdcr5ElX11qD8q2Zo7PgycjdYvPidvcu6NMuxTLhP2umN2aNIpq_95AiqGkFHFaj5xL1h6imeANAaFmpGuFxt70dqOSSZ9WWV3XRzCyUQn6--IFTA9UbC2GnGL9MAl9fesFNZPCgMmlO5vLSxYmSL_uchJEoDEWFfGb75Q02c3mM70");'>
+<div class="absolute inset-0 bg-black/10"></div>
+</div>
+<div class="flex-1 ml-3 overflow-hidden">
+<p class="text-slate-900 dark:text-slate-100 font-medium truncate">路牌指示</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs truncate">翻译为中文 • 2小时前</p>
+</div>
+<button class="size-8 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center p-3 bg-white dark:bg-slate-800 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700/50">
+<div class="size-12 rounded-lg bg-blue-50 dark:bg-slate-700 flex items-center justify-center shrink-0 text-primary">
+<span class="material-symbols-outlined">text_fields</span>
+</div>
+<div class="flex-1 ml-3 overflow-hidden">
+<p class="text-slate-900 dark:text-slate-100 font-medium truncate">快速文本输入</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs truncate">英语转中文 • 昨天</p>
+</div>
+<button class="size-8 flex items-center justify-center text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex gap-2 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-6 pt-2 fixed bottom-0 w-full max-w-md z-20">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="text-primary flex h-8 items-center justify-center">
+<span class="material-symbols-outlined fill-current">home</span>
+</div>
+<p class="text-primary text-xs font-medium leading-normal tracking-[0.015em]">首页</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">history</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">历史</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-slate-600 dark:hover:text-slate-300 transition-colors" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">我的</p>
+</a>
+</div>
+</div>
+
+</body></html>

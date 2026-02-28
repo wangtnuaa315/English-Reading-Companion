@@ -1,0 +1,56 @@
+<!--pages/profile/profile.wxml-->
+<view class="page-container">
+  <!-- 用户信息区 -->
+  <view class="profile-header">
+    <view class="avatar-circle">
+      <text class="avatar-icon">👤</text>
+    </view>
+    <text class="profile-name">英语学习者</text>
+    <text class="profile-desc">坚持学习，每天进步一点点</text>
+  </view>
+
+  <!-- 统计信息 -->
+  <view class="stats-row">
+    <view class="stat-item">
+      <text class="stat-number">{{stats.historyCount}}</text>
+      <text class="stat-label">翻译次数</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.wordCount}}</text>
+      <text class="stat-label">生词积累</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-number">{{stats.days}}</text>
+      <text class="stat-label">学习天数</text>
+    </view>
+  </view>
+
+  <!-- 生词本入口 -->
+  <view class="menu-section">
+    <view class="menu-item" bindtap="viewWords">
+      <text class="menu-icon">📖</text>
+      <text class="menu-text">我的生词本</text>
+      <text class="menu-badge" wx:if="{{stats.wordCount > 0}}">{{stats.wordCount}}</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="viewHistory">
+      <text class="menu-icon">📋</text>
+      <text class="menu-text">翻译历史</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="clearCache">
+      <text class="menu-icon">🗑</text>
+      <text class="menu-text">清除缓存</text>
+      <text class="menu-arrow">›</text>
+    </view>
+    <view class="menu-item" bindtap="showAbout">
+      <text class="menu-icon">ℹ️</text>
+      <text class="menu-text">关于我们</text>
+      <text class="menu-arrow">›</text>
+    </view>
+  </view>
+
+  <view class="version-text">English Reading Companion v1.0.0</view>
+</view>
