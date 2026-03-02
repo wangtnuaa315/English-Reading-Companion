@@ -52,12 +52,6 @@ Page({
                         if (cleanWord) {
                             tokenPhonetic = phonetics.getPhonetic(cleanWord);
                             if (!tokenPhonetic) {
-                                try {
-                                    const result = await translator.translateWithPhonetic(cleanWord);
-                                    tokenPhonetic = result.phonetic || '';
-                                } catch (e) { /* skip */ }
-                            }
-                            if (!tokenPhonetic) {
                                 try { tokenPhonetic = await phonetics.getPhoneticAsync(cleanWord); } catch (e) { /* skip */ }
                             }
                         }
@@ -102,8 +96,9 @@ Page({
                 return
             }
 
-            // 2. 对每段识别文本：先翻译整句，再逐词查询音标
-            const wordPromises = ocrResult.data.words.map(async item => {
+            // 2. 逐条处理识别结果（串行，避免微信并发请求限制）
+            const words = []
+            for (let item of ocrResult.data.words) {
                 const word = item.text
                 // 整句翻译获取中文释义
                 const translation = await translator.translate(word)
@@ -112,7 +107,6 @@ Page({
                 const wordParts = word.split(' ')
                 const tokens = []
 
-                // 串行请求避免微信并发限制 (最多同时 10 个 wx.request)
                 for (let t of wordParts) {
                     const cleanWordMatch = t.match(/[a-zA-Z'-]+/);
                     const cleanWord = cleanWordMatch ? cleanWordMatch[0] : '';
@@ -122,17 +116,7 @@ Page({
                         // 1. 优先从本地离线词典查（0 延迟）
                         tokenPhonetic = phonetics.getPhonetic(cleanWord);
 
-                        // 2. 本地没有 → 调用百度翻译词典版，翻译结果不使用但提取音标
-                        if (!tokenPhonetic) {
-                            try {
-                                const result = await translator.translateWithPhonetic(cleanWord);
-                                tokenPhonetic = result.phonetic || '';
-                            } catch (e) {
-                                console.log('[Phonetic] 百度词典查询跳过:', cleanWord);
-                            }
-                        }
-
-                        // 3. 百度也没有 → 尝试 Free Dictionary API 作最后兜底
+                        // 2. 本地没有 → 调用 Free Dictionary API（免费无限量）
                         if (!tokenPhonetic) {
                             try {
                                 tokenPhonetic = await phonetics.getPhoneticAsync(cleanWord);
@@ -143,16 +127,14 @@ Page({
                     tokens.push({ text: t, phonetic: tokenPhonetic })
                 }
 
-                return {
+                words.push({
                     word: word,
                     wordTokens: tokens,
                     phonetic: phonetics.getPhonetic(word),
                     translation: translation,
                     confidence: item.confidence || 0
-                }
-            })
-
-            const words = await Promise.all(wordPromises)
+                })
+            }
 
             this.setData({
                 wordList: words,

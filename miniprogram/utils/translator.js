@@ -88,17 +88,31 @@ function translateWithPhonetic(word) {
                             const dictStr = res.data.result.trans_result[0].dict;
                             if (dictStr) {
                                 const dictData = typeof dictStr === 'string' ? JSON.parse(dictStr) : dictStr;
-                                // word_result.simple_means.exchange 或 word_result.simple_means.symbols
+                                console.log('[Dict Raw]', word, JSON.stringify(dictData).substring(0, 500));
+
+                                // 路径 1: word_result.simple_means.symbols[0].ph_am / ph_en
                                 if (dictData.word_result && dictData.word_result.simple_means) {
-                                    const symbols = dictData.word_result.simple_means.symbols;
-                                    if (symbols && symbols.length > 0) {
-                                        // 优先取美式音标 (ph_am)，其次英式 (ph_en)
-                                        phonetic = symbols[0].ph_am || symbols[0].ph_en || '';
-                                        if (phonetic && !phonetic.startsWith('/')) {
-                                            phonetic = '/' + phonetic + '/';
-                                        }
+                                    const sm = dictData.word_result.simple_means;
+                                    if (sm.symbols && sm.symbols.length > 0) {
+                                        phonetic = sm.symbols[0].ph_am || sm.symbols[0].ph_en || '';
                                     }
                                 }
+
+                                // 路径 2: 顶层 phonetic 字段
+                                if (!phonetic && dictData.phonetic) {
+                                    phonetic = dictData.phonetic;
+                                }
+
+                                // 路径 3: word_result.simple_means.exchange 等其他位置
+                                if (!phonetic && dictData.word_result && dictData.word_result.simple_means && dictData.word_result.simple_means.phonetic) {
+                                    phonetic = dictData.word_result.simple_means.phonetic;
+                                }
+
+                                if (phonetic) {
+                                    if (!phonetic.startsWith('/')) phonetic = '/' + phonetic + '/';
+                                }
+                            } else {
+                                console.log('[Dict Empty]', word, '无 dict 字段');
                             }
                         } catch (e) {
                             console.log('[Dict Parse] 词典字段解析跳过:', e.message);

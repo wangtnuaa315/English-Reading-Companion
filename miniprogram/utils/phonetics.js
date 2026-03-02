@@ -291,6 +291,9 @@ const phoneticsDict = {
     'bike': '/baɪk/', 'skateboard': '/ˈskeɪtbɔːrd/', 'scooter': '/ˈskuːtər/',
     'bus': '/bʌs/', 'train': '/treɪn/', 'subway': '/ˈsʌbweɪ/', 'ride': '/raɪd/',
     'level': '/ˈlɛvəl/', 'grade': '/ɡreɪd/', 'elementary': '/ˌɛlɪˈmɛntəri/', 'ross': '/rɔːs/',
+    'bubble': '/ˈbʌbəl/', 'soap': '/soʊp/', 'pocket': '/ˈpɑːkɪt/', 'material': '/məˈtɪriəl/',
+    'inside': '/ɪnˈsaɪd/', 'thing': '/θɪŋ/', 'many': '/ˈmɛni/', 'people': '/ˈpiːpəl/',
+    'blow': '/bloʊ/', 'pop': '/pɑːp/', 'round': '/raʊnd/', 'wand': '/wɑːnd/',
 
     // 单字母补充
     'b': '/biː/', 'c': '/siː/', 'd': '/diː/', 'e': '/iː/', 'f': '/ɛf/',
