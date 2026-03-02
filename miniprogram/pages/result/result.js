@@ -43,19 +43,27 @@ Page({
             // 兼容由于版本升级导致的旧数据格式（老的记录里没有 wordTokens 字段）
             const compatibleWordsPromises = (record.words || []).map(async w => {
                 if (!w.wordTokens && w.word) {
-                    const tokenPromises = w.word.split(' ').map(async t => {
+                    const wordParts = w.word.split(' ');
+                    const tokens = [];
+                    for (let t of wordParts) {
                         const cleanWordMatch = t.match(/[a-zA-Z'-]+/);
                         const cleanWord = cleanWordMatch ? cleanWordMatch[0] : '';
-                        let phonetic = '';
+                        let tokenPhonetic = '';
                         if (cleanWord) {
-                            phonetic = await phonetics.getPhoneticAsync(cleanWord);
+                            tokenPhonetic = phonetics.getPhonetic(cleanWord);
+                            if (!tokenPhonetic) {
+                                try {
+                                    const result = await translator.translateWithPhonetic(cleanWord);
+                                    tokenPhonetic = result.phonetic || '';
+                                } catch (e) { /* skip */ }
+                            }
+                            if (!tokenPhonetic) {
+                                try { tokenPhonetic = await phonetics.getPhoneticAsync(cleanWord); } catch (e) { /* skip */ }
+                            }
                         }
-                        return {
-                            text: t,
-                            phonetic: phonetic
-                        }
-                    })
-                    w.wordTokens = await Promise.all(tokenPromises);
+                        tokens.push({ text: t, phonetic: tokenPhonetic });
+                    }
+                    w.wordTokens = tokens;
                 }
                 return w
             })
@@ -94,27 +102,46 @@ Page({
                 return
             }
 
-            // 2. 对每个单词获取翻译和音标
+            // 2. 对每段识别文本：先翻译整句，再逐词查询音标
             const wordPromises = ocrResult.data.words.map(async item => {
                 const word = item.text
+                // 整句翻译获取中文释义
                 const translation = await translator.translate(word)
 
-                // 将句子按空格拆分为各个词组
-                const tokenPromises = word.split(' ').map(async t => {
-                    // 仅提取第一段连续字母以便精准查音标 (忽略连在一起的句号然后变成错误生词)
+                // 将句子按空格拆分为各个词组，逐词获取音标
+                const wordParts = word.split(' ')
+                const tokens = []
+
+                // 串行请求避免微信并发限制 (最多同时 10 个 wx.request)
+                for (let t of wordParts) {
                     const cleanWordMatch = t.match(/[a-zA-Z'-]+/);
                     const cleanWord = cleanWordMatch ? cleanWordMatch[0] : '';
-                    let phonetic = '';
-                    if (cleanWord) {
-                        phonetic = await phonetics.getPhoneticAsync(cleanWord);
-                    }
-                    return {
-                        text: t,
-                        phonetic: phonetic
-                    }
-                })
+                    let tokenPhonetic = '';
 
-                const tokens = await Promise.all(tokenPromises);
+                    if (cleanWord) {
+                        // 1. 优先从本地离线词典查（0 延迟）
+                        tokenPhonetic = phonetics.getPhonetic(cleanWord);
+
+                        // 2. 本地没有 → 调用百度翻译词典版，翻译结果不使用但提取音标
+                        if (!tokenPhonetic) {
+                            try {
+                                const result = await translator.translateWithPhonetic(cleanWord);
+                                tokenPhonetic = result.phonetic || '';
+                            } catch (e) {
+                                console.log('[Phonetic] 百度词典查询跳过:', cleanWord);
+                            }
+                        }
+
+                        // 3. 百度也没有 → 尝试 Free Dictionary API 作最后兜底
+                        if (!tokenPhonetic) {
+                            try {
+                                tokenPhonetic = await phonetics.getPhoneticAsync(cleanWord);
+                            } catch (e) { /* 静默 */ }
+                        }
+                    }
+
+                    tokens.push({ text: t, phonetic: tokenPhonetic })
+                }
 
                 return {
                     word: word,
